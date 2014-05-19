@@ -115,5 +115,5 @@ ftable2latex <- function(tab, package = 'tabular', labels = vector(), cv.length 
 	}
 	
 	# Encerrando a tabela
-	cat(sprintf('\\end{%s} \\\\\n', package), append = TRUE, ...)
+	cat(sprintf('\\end{%s}\n', package), append = TRUE, ...)
 }
