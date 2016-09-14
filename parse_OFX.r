@@ -12,11 +12,11 @@ parse_OFX <- function(x) {
         if (posOut[1] > -1) {
             saldo <- substr(x, posOut[1] + nchar(tag) + 2, attr(posOut, 'match.length')[1] - nchar(tag) - 3)
             output[[i]] <- if (grepl('<', saldo)) { parseOFX(saldo) } else { saldo }
-            x <- sub(sprintf('^<%s>.*?</%1$s>', tag), '', x)
+            x <- gsub(sprintf('^<%s>.*?</%1$s>', tag), '', x)
         } else if (length(posOutAlt) > 1) {
             saldo <- substr(x, posOutAlt[1] + nchar(tag) + 2, posOutAlt[2] - 1)
             output[[i]] <- if (grepl('<', saldo)) { parseOFX(saldo) } else { saldo }
-            x <- sub(sprintf('^<%s>[^<]*', tag), '', x)
+            x <- gsub(sprintf('^<%s>[^<]*', tag), '', x)
         } else  {
             output[[i]] <- gsub('^<.*>', '', x)
             x <- ''
