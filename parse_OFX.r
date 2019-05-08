@@ -1,4 +1,4 @@
-parse_OFX <- function(x) {
+parseOFX <- function(x) {
     output <- list()
     nomes <- NA
     i <- 0
